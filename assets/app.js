@@ -58,7 +58,7 @@ async function loadAssets() {
   }
   weights = parsed;
 
-  document.getElementById('status').textContent = '✅ Model ready.';
+  document.getElementById('status').textContent = 'Model ready.';
 }
 
 function predict() {
@@ -91,7 +91,23 @@ function predict() {
   ['E0', 'E1', 'E2', 'E3'].forEach((id, i) => {
     document.getElementById(id).textContent = result[i].toFixed(4);
   });
-  document.getElementById('results').style.display = 'block';
+  const resultsEl = document.getElementById('results');
+  resultsEl.classList.remove('hidden');
+  resultsEl.style.display = 'block';
+
+  const spectrumData = [
+    { name: "π(1S)",   jp: "0⁻", surrogateMass: 0.1528, expMass: 0.13957 },
+    { name: "K(1S)",   jp: "0⁻", surrogateMass: 0.4100, expMass: 0.49368 },
+    { name: "J/ψ(1S)", jp: "1⁻", surrogateMass: 3.0883, expMass: 3.0969 },
+    { name: "J/ψ(2S)", jp: "1⁻", surrogateMass: 3.6861, expMass: 3.6314 },
+    { name: "𝜂꜀ (1S)", jp: "0⁻", surrogateMass: 2.9964, expMass: 2.9839 },
+    { name: "𝜂꜀ (2S)", jp: "0⁻", surrogateMass: 3.6375, expMass: 3.6011 },
+    { name: "Υ(1S)", jp: "0⁻", surrogateMass: 9.4603, expMass: 9.4241 },
+    { name: "Υ(2S)", jp: "0⁻", surrogateMass: 10.0233, expMass: 10.004 }
+    
+  ];
+  drawmesonspectrum('#energyChart', spectrumData);
+
 }
 
 loadAssets();

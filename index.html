@@ -3,49 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heavy Quark Energy Predictor</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Meson Energy Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --terminal-bg: #000000;
+      --glow-green: #39ff14;
+      --text-green: #00cc44;
+      --dim-green: #008822;
+    }
+
+    body {
+      font-family: 'VT323', 'Courier New', monospace;
+      background: var(--terminal-bg);
+      color: var(--text-green);
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen bg-black text-[#00cc44]">
 
-<h1>⚛️ Heavy Quark Two-Body Energy Predictor</h1>
-<p style="color:#666;font-size:0.9rem">Meng–Wang–Oka model · Surrogate Neural Network</p>
+<main class="mx-auto w-full max-w-[96vw] px-4 py-8 sm:px-8 lg:px-10">
+  <h1 class="text-2xl font-semibold tracking-tight text-[#39ff14] drop-shadow-[0_0_8px_rgba(57,255,20,0.55)]">Meson Energy Predictor</h1>
+  <p class="mt-1 text-sm text-[#008822]">Surrogate Neural Network for predicting meson energy based on Meng–Wang–Oka model</p>
 
-<h2>Quark Masses (GeV)</h2>
-<div class="grid-2">
-  <label>m₁ <input type="number" id="m1" value="1.5" min="0.1" max="6.0" step="0.1" /></label>
-  <label>m₂ <input type="number" id="m2" value="1.5" min="0.1" max="6.0" step="0.1" /></label>
-</div>
+  <section class="mt-8">
+    <h2 class="text-lg font-medium">Quark Masses (GeV)</h2>
+    <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <label class="text-sm">m₁
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="m1" value="1.5" min="0.1" max="6.0" step="0.1" />
+      </label>
+      <label class="text-sm">m₂
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="m2" value="1.5" min="0.1" max="6.0" step="0.1" />
+      </label>
+    </div>
+  </section>
 
-<h2>Model Parameters</h2>
-<div class="grid">
-  <label>α (alpha)   <input type="number" id="alpha"  value="0.8321" step="0.01" /></label>
-  <label>λ (Lambda)  <input type="number" id="lambda" value="0.1653" step="0.01" /></label>
-  <label>σ (spin)
-    <select id="sigma">
-      <option value="-3">-3 (spin-singlet)</option>
-      <option value="1">1 (spin-triplet)</option>
-    </select>
-  </label>
-  <label>κ (Kappa)   <input type="number" id="kappa"  value="0.5069" step="0.01" /></label>
-  <label>κ' (Kappa') <input type="number" id="kappa_" value="1.8609" step="0.01" /></label>
-  <label>A           <input type="number" id="A"      value="1.6553" step="0.01" /></label>
-  <label>B           <input type="number" id="B"      value="0.2204" step="0.01" /></label>
-</div>
+  <section class="mt-8">
+    <h2 class="text-lg font-medium">Model Parameters</h2>
+    <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <label class="text-sm">α (alpha)
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="alpha"  value="0.8321" step="0.01" />
+      </label>
+      <label class="text-sm">λ (Lambda)
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="lambda" value="0.1653" step="0.01" />
+      </label>
+      <label class="text-sm">σ (spin)
+        <select class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" id="sigma">
+          <option value="-3">-3 (spin-singlet)</option>
+          <option value="1">1 (spin-triplet)</option>
+        </select>
+      </label>
+      <label class="text-sm">κ (Kappa)
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="kappa"  value="0.5069" step="0.01" />
+      </label>
+      <label class="text-sm">κ' (Kappa')
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="kappa_" value="1.8609" step="0.01" />
+      </label>
+      <label class="text-sm">A
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="A" value="1.6553" step="0.01" />
+      </label>
+      <label class="text-sm">B
+        <input class="mt-1 w-full rounded-md border border-[#008822] bg-black px-3 py-2 text-sm text-[#00cc44] outline-none ring-[#00cc44]/40 transition focus:border-[#39ff14] focus:ring-2" type="number" id="B" value="0.2204" step="0.01" />
+      </label>
+    </div>
+  </section>
 
-<button onclick="predict()">Predict Energy Levels</button>
-<div id="status">Loading model...</div>
+  <button class="mt-8 rounded-md border border-[#39ff14] bg-[#005511] px-5 py-2.5 text-sm font-medium text-[#39ff14] shadow-[0_0_12px_rgba(57,255,20,0.2)] transition hover:bg-[#008822] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#39ff14]" onclick="predict()">Predict Energy Levels</button>
+  <div id="status" class="mt-3 text-sm">Loading model...</div>
 
-<div id="results">
-  <h2>Predicted Energy Levels (GeV)</h2>
-  <div class="cards">
-    <div class="card"><span>E₀</span><b id="E0">—</b></div>
-    <div class="card"><span>E₁</span><b id="E1">—</b></div>
-    <div class="card"><span>E₂</span><b id="E2">—</b></div>
-    <div class="card"><span>E₃</span><b id="E3">—</b></div>
+  <div id="results" class="mt-8 hidden">
+    <h2 class="text-lg font-medium text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">Predicted Energy Levels (GeV)</h2>
+    <div class="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div class="rounded-lg border border-[#008822] bg-black p-4 text-center"><span class="block text-xs text-[#008822]">E₀</span><b id="E0" class="mt-1 block text-xl text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">—</b></div>
+      <div class="rounded-lg border border-[#008822] bg-black p-4 text-center"><span class="block text-xs text-[#008822]">E₁</span><b id="E1" class="mt-1 block text-xl text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">—</b></div>
+      <div class="rounded-lg border border-[#008822] bg-black p-4 text-center"><span class="block text-xs text-[#008822]">E₂</span><b id="E2" class="mt-1 block text-xl text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">—</b></div>
+      <div class="rounded-lg border border-[#008822] bg-black p-4 text-center"><span class="block text-xs text-[#008822]">E₃</span><b id="E3" class="mt-1 block text-xl text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">—</b></div>
+    </div>
+  <div><h2 class="text-lg font-medium text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">Benchmark Showcase</h2></div>
+    <div class="mt-4 rounded-lg border border-[#008822] bg-black p-3">
+      <div id="energyChart" class="w-full"></div>
+    </div>
   </div>
-</div>
+</main>
 
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="assets/d3.min.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

@@ -3,21 +3,21 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   max-width: 720px;
   margin: 40px auto;
   padding: 0 20px;
-  background: #f9f9f9;
+  background: #000000;
 }
 
 h1 {
   font-size: 1.4rem;
-  color: #222;
+  color: #959595;
 }
 
 h2 {
   font-size: 1.1rem;
-  color: #444;
+  color: #6b6b6b;
   margin-top: 24px;
 }
 
