@@ -84,10 +84,34 @@
       <div class="rounded-lg border border-[#008822] bg-black p-4 text-center"><span class="block text-xs text-[#008822]">E₂</span><b id="E2" class="mt-1 block text-xl text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">—</b></div>
       <div class="rounded-lg border border-[#008822] bg-black p-4 text-center"><span class="block text-xs text-[#008822]">E₃</span><b id="E3" class="mt-1 block text-xl text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">—</b></div>
     </div>
-  <div><h2 class="text-lg font-medium text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">Benchmark Showcase</h2></div>
+  <div><h2 class="text-lg font-medium text-[#39ff14] drop-shadow-[0_0_6px_rgba(57,255,20,0.5)]">Predicted Energy Spectrum</h2></div>
     <div class="mt-4 rounded-lg border border-[#008822] bg-black p-3">
       <div id="energyChart" class="w-full"></div>
     </div>
+
+    <section class="mt-8" aria-labelledby="pdg-heading">
+      <h2 id="pdg-heading" class="text-lg font-medium text-[#39ff14]">PDG Reference Masses</h2>
+      <p id="pdg-status" class="mt-2 text-sm" role="status">Loading PDG references...</p>
+      <div class="mt-3 overflow-x-auto rounded-lg border border-[#008822]">
+        <table class="w-full text-left text-sm">
+          <caption class="sr-only">Experimental vector and pseudoscalar charmonium and bottomonium masses</caption>
+          <thead class="bg-[#005511] text-[#39ff14]">
+            <tr>
+              <th scope="col" class="px-3 py-3">State</th>
+              <th scope="col" class="px-3 py-3">Family</th>
+              <th scope="col" class="px-3 py-3">Spin channel</th>
+              <th scope="col" class="px-3 py-3">Mass ± uncertainty (MeV)</th>
+              <th scope="col" class="px-3 py-3">Mass (GeV)</th>
+              <th scope="col" class="px-3 py-3">Source</th>
+            </tr>
+          </thead>
+          <tbody id="pdg-rows"></tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm">* ηb(2S) is omitted from the PDG 2025 summary table; its listed measurement is shown with separate statistical and asymmetric systematic uncertainties.</p>
+      <p class="mt-2 text-sm">Compare matching quark flavors and spin channels. Differences from experiment include the potential model's discrepancy as well as surrogate error.</p>
+    </section>
+
   </div>
 </main>
 
@@ -95,5 +119,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
 <script src="assets/d3.min.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/pdg-reference.js"></script>
 </body>
 </html>
+
+
