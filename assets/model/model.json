@@ -26,7 +26,7 @@
             "trainable": true,
             "dtype": "float32",
             "units": 64,
-            "activation": "swish",
+            "activation": "gelu",
             "use_bias": true,
             "kernel_initializer": {
               "class_name": "GlorotUniform",
@@ -47,7 +47,7 @@
             "trainable": true,
             "dtype": "float32",
             "units": 64,
-            "activation": "swish",
+            "activation": "gelu",
             "use_bias": true,
             "kernel_initializer": {
               "class_name": "GlorotUniform",
@@ -68,7 +68,7 @@
             "trainable": true,
             "dtype": "float32",
             "units": 64,
-            "activation": "swish",
+            "activation": "gelu",
             "use_bias": true,
             "kernel_initializer": {
               "class_name": "GlorotUniform",
